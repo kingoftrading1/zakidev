@@ -1,0 +1,290 @@
+/*
+  style.css — تصميم عصري ومتجاوب مع RTL
+  - لوحة ألوان متناسقة (3–4 ألوان)
+  - أنيميشن وانسيابية + Hover effects + Micro-interactions
+  - Parallax بسيط في الهيرو
+  - تحسينات وصول (focus-visible)
+  - احترام تفضيلات المستخدم للحركة (prefers-reduced-motion)
+  - جاهز للداكن بإضافة data-theme="dark" على <html>
+*/
+
+:root{
+  --brand:#0b3d91;      /* أزرق احترافي */
+  --accent:#21c26b;     /* أخضر حديث */
+  --ink:#0f172a;        /* أسود أزرق داكن للنص */
+  --muted:#64748b;      /* نص ثانوي */
+  --bg:#f8fafc;         /* خلفية فاتحة */
+  --card:#ffffff;       /* خلفية البطاقات */
+  --line:#e5e7eb;       /* حدود ناعمة */
+  --ink-inv:#ffffff;    /* نص معكوس */
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+}
+
+html[data-theme="dark"]{
+  --bg:#0b1220;
+  --card:#0f172a;
+  --ink:#e5e7eb;
+  --muted:#94a3b8;
+  --line:#1f2937;
+  --shadow:0 12px 36px rgba(0,0,0,.35);
+}
+
+/* الأساسيات */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Tahoma,Arial,sans-serif;line-height:1.65}
+img{max-width:100%;display:block}
+.container{width:min(1200px,92%);margin-inline:auto}
+
+/* روابط وحالات الوصول */
+a{color:inherit;text-decoration:none;transition:opacity .2s ease, color .2s ease}
+a:hover{opacity:.9}
+:focus-visible{outline:3px solid color-mix(in oklab,var(--brand),#fff 40%);outline-offset:2px;border-radius:12px}
+
+/* شريط التنقل */
+header{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);backdrop-filter:saturate(150%) blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--brand)}
+.nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0}
+.nav a{padding:.5rem .85rem;border-radius:12px}
+.nav a:hover{background:color-mix(in oklab,var(--brand),#fff 86%)}
+.cta{background:var(--brand);color:var(--ink-inv);padding:.65rem 1rem;border-radius:14px;font-weight:700;box-shadow:var(--shadow)}
+.cta:hover{transform:translateY(-1px)}
+
+/* بطل الصفحة (Hero) مع Parallax خفيف */
+.hero{position:relative;isolation:isolate;padding:92px 0;background:linear-gradient(180deg,color-mix(in oklab,#ebf1ff,var(--bg) 40%),transparent),
+  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><g fill="%23e5e7eb" opacity=".4"><circle cx="20" cy="20" r="2"/><circle cx="80" cy="40" r="2"/><circle cx="140" cy="100" r="2"/></g></svg>') repeat}
+background-attachment: fixed;
+}
+.hero h1{font-size:clamp(1.7rem,2.4vw,2.6rem);margin:0 0 .5rem}
+.hero p{color:var(--muted);margin:0 0 1rem}
+
+/* أزرار عامة */
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:14px;border:1px solid var(--line);background:var(--card);transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#042e14;font-weight:800}
+
+/* أقسام عامة */
+section{padding:56px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:20px;gap:12px}
+.section-head h2{margin:0;font-size:1.6rem}
+.pill{display:inline-block;background:color-mix(in oklab,var(--brand),#fff 85%);color:color-mix(in oklab,var(--brand),#000 20%);padding:.25rem .6rem;border-radius:999px;font-size:.8rem}
+
+/* الشبكة والبطاقات */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s ease}
+.card:hover{transform:translateY(-3px)}
+@media(min-width:768px){.card{grid-column:span 6}}
+@media(min-width:1024px){.card{grid-column:span 4}}
+.card-body{padding:16px}
+
+/* أقسام المواقع */
+.site{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.site-head{padding:18px 18px 0}
+.site-head h3{margin:0 0 4px}
+.site-meta{color:var(--muted);font-size:.95rem;margin-bottom:12px}
+.site-body{padding:18px}
+.site-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:12px}
+
+/* السلايدر */
+.slider{position:relative;overflow:hidden;background:#000}
+.slides{display:flex;transform:translateX(0);transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.slides img{width:100%;object-fit:cover;height:clamp(220px,36vw,360px);filter:saturate(1.05) contrast(1.02)}
+.slider-nav{display:flex;gap:10px;position:absolute;inset:auto 16px 16px auto}
+.dot{width:11px;height:11px;border-radius:999px;background:#fff;opacity:.5;border:1px solid #000;box-shadow:0 0 0 2px rgba(0,0,0,.15);cursor:pointer;transition:opacity .2s ease, transform .2s ease}
+.dot:hover{transform:scale(1.1);opacity:.8}
+.dot.active{opacity:1}
+
+/* الملاحظات */
+.note{background:color-mix(in oklab,var(--bg),#fff 50%);border:1px dashed var(--line);border-radius:14px;padding:12px;margin-top:12px;color:color-mix(in oklab,var(--ink),#000 10%)}
+
+/* الجداول */
+table{width:100%;border-collapse:separate;border-spacing:0 10px}
+th,td{text-align:center;padding:12px;background:var(--card);border:1px solid var(--line)}
+th{background:color-mix(in oklab,var(--bg),#fff 60%)}
+tbody tr{transition:transform .15s ease, box-shadow .15s ease}
+tbody tr:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+/* الأسئلة الشائعة */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.faq details+details{margin-top:10px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+
+/* التذييل */
+footer{background:#0b1220;color:#cbd5e1;padding:36px 0;margin-top:24px}
+.foot-grid{display:grid;gap:20px}
+@media(min-width:768px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
+.badge{display:inline-flex;gap:.4rem;align-items:center;border:1px solid #334155;background:#0f172a;color:#cbd5e1;padding:.4rem .6rem;border-radius:10px}
+
+/* زر العودة للأعلى */
+.floating-top{position:fixed;inset:auto 12px 12px auto;background:#111827;color:#fff;padding:.6rem 0.7rem;border-radius:12px;opacity:.9;display:none;border:1px solid #1f2937;box-shadow:var(--shadow)}
+.floating-top:hover{transform:translateY(-2px)}
+
+/* مايكرو-انترأكشنز */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card, .site, .hero .btn, .grid > *{animation:fadeInUp .5s ease both}
+
+/* تقليل الحركة إن طلب المستخدم ذلك */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .btn, .card, .site, .grid > *{animation:none;transition:none}
+}
+
+/* تحسينات استجابة إضافية */
+@media (max-width:640px){
+  .nav ul{gap:4px}
+  .nav a{padding:.45rem .65rem}
+  .hero{padding:72px 0}
+  .section-head h2{font-size:1.35rem}
+}
+/* Toast Message */
+.toast-message {
+    position: fixed;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+.toast-message.show {
+    bottom: 30px;
+    opacity: 1;
+}
+
+/* Scroll Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* تصميم عام */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #111;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    background: gold;
+    color: black;
+    border-radius: 5px;
+}
+
+/* السلايدر */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: gold;
+    color: black;
+    box-shadow: 0 0 10px gold;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* الكروت */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px gold;
+    transform: translateY(-5px);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: gold;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: orange;
+    box-shadow: 0 0 10px orange;
+}
+
+/* الفوتر */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* تأثير الظهور */
+.fade-in {
+    animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
