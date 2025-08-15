@@ -288,3 +288,21 @@ footer {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+/* نفس الكود اللي أرسلته أنت بالكامل ... */
+
+/* تحسينات استجابة إضافية */
+@media (max-width:640px){
+  .nav ul{gap:4px; flex-wrap: wrap;}
+  .nav a{padding:.45rem .65rem; font-size: 0.9rem;}
+  .hero{padding:72px 0; text-align: center;}
+  .hero h1{font-size: 1.5rem;}
+  .hero p{font-size: 0.95rem;}
+  .section-head h2{font-size:1.35rem}
+  .grid{grid-template-columns: 1fr;}
+  .cards{flex-direction: column; align-items: center;}
+  .card{width: 100%; max-width: 320px;}
+  .site-actions{flex-direction: column;}
+  .slides img{height: auto;}
+  .foot-grid{grid-template-columns: 1fr;}
+}
