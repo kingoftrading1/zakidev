@@ -447,28 +447,134 @@
       <p>لعدم التطابق مع العينة المطلوبة، أو اختلاف الإجابات، أو مشاكل تقنية. حافظ على ثبات إجابات ملفك.</p>
     </details>
   </section>
-
-  <!-- ===== Contact ===== -->
-  <section id="contact" class="container" aria-labelledby="contact-title">
-    <div class="section-head">
-      <h2 id="contact-title">📩 اتصل بنا</h2>
-      <span class="pill">نرد خلال 48 ساعة</span>
+<!-- ===== Contact ===== -->
+<section id="contact" class="container" aria-labelledby="contact-title">
+  <div class="section-head">
+    <h2 id="contact-title">📩 اتصل بنا</h2>
+    <span class="pill">نرد خلال 48 ساعة</span>
+  </div>
+  <form id="contactForm" aria-label="نموذج تواصل" class="site">
+    <div class="site-body">
+      <label>الاسم<br>
+        <input type="text" name="name" placeholder="اسمك" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      </label>
+      <br><br>
+      <label>البريد<br>
+        <input type="email" name="email" placeholder="you@email.com" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      </label>
+      <br><br>
+      <label>رسالتك<br>
+        <textarea name="msg" rows="5" placeholder="كيف نقدر نساعدك؟" style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></textarea>
+      </label>
+      <br><br>
+      <button type="submit" class="btn primary">إرسال</button>
     </div>
-    <form aria-label="نموذج تواصل" class="site">
-      <div class="site-body">
-        <label>الاسم<br>
-          <input type="text" name="name" placeholder="اسمك" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></label>
-        <br><br>
-        <label>البريد<br>
-          <input type="email" name="email" placeholder="you@email.com" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></label>
-        <br><br>
-        <label>رسالتك<br>
-          <textarea name="msg" rows="5" placeholder="كيف نقدر نساعدك؟" style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></textarea></label>
-        <br><br>
-        <button type="submit" class="btn primary">إرسال</button>
-      </div>
-    </form>
-  </section>
+  </form>
+</section>
+
+<!-- ===== API Script ===== -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  let name = this.name.value.trim();
+  let email = this.email.value.trim();
+  let message = this.msg.value.trim();
+
+  if (!name || !email || !message) {
+    alert("يرجى ملء جميع الحقول");
+    return;
+  }
+
+  try {
+    let response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: "6cbc99cb-296a-458c-8298-21b855f45dea",
+        name: name,
+        email: email,
+        message: message
+      })
+    });
+
+    let result = await response.json();
+
+    if (result.success) {
+      alert("✅ تم إرسال رسالتك بنجاح");
+      this.reset();
+    } else {
+      alert("❌ حدث خطأ أثناء الإرسال");
+    }
+  } catch (error) {
+    alert("⚠️ تعذر الاتصال بالخادم");
+  }
+});
+</script>
+<!-- ===== Contact ===== -->
+<section id="contact" class="container" aria-labelledby="contact-title">
+  <div class="section-head">
+    <h2 id="contact-title">📩 اتصل بنا</h2>
+    <span class="pill">نرد خلال 48 ساعة</span>
+  </div>
+  <form id="contactForm" aria-label="نموذج تواصل" class="site">
+    <div class="site-body">
+      <label>الاسم<br>
+        <input type="text" name="name" placeholder="اسمك" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      </label>
+      <br><br>
+      <label>البريد<br>
+        <input type="email" name="email" placeholder="you@email.com" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      </label>
+      <br><br>
+      <label>رسالتك<br>
+        <textarea name="msg" rows="5" placeholder="كيف نقدر نساعدك؟" style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></textarea>
+      </label>
+      <br><br>
+      <button type="submit" class="btn primary">إرسال</button>
+    </div>
+  </form>
+</section>
+
+<!-- ===== API Script ===== -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  let name = this.name.value.trim();
+  let email = this.email.value.trim();
+  let message = this.msg.value.trim();
+
+  if (!name || !email || !message) {
+    alert("يرجى ملء جميع الحقول");
+    return;
+  }
+
+  try {
+    let response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: "6cbc99cb-296a-458c-8298-21b855f45dea",
+        name: name,
+        email: email,
+        message: message
+      })
+    });
+
+    let result = await response.json();
+
+    if (result.success) {
+      alert("✅ تم إرسال رسالتك بنجاح");
+      this.reset();
+    } else {
+      alert("❌ حدث خطأ أثناء الإرسال");
+    }
+  } catch (error) {
+    alert("⚠️ تعذر الاتصال بالخادم");
+  }
+});
+</script>
 
   <!-- ===== Footer ===== -->
   <footer>
@@ -528,4 +634,5 @@
   </script>
 </body>
 </html>
+
 
