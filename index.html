@@ -3,174 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أفضل مواقع الربح من الإنترنت</title>
+  <title>أدلة الربح المجاني – مواقع موصى بها</title>
+  <meta name="description" content="موقع عربي يعرض أفضل مواقع الربح المجانية مع شروحات، مقارنة، وطرق السحب والدفع.">
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* === إعدادات عامة === */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #f4f4f4; color: #333; line-height: 1.6; }
-    a { text-decoration: none; color: #007BFF; }
-    a:hover { text-decoration: underline; }
-    header { background: #007BFF; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-    header .logo { font-size: 1.5em; font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 15px; flex-wrap: wrap; }
-    nav ul li a { color: white; font-weight: bold; }
-    main { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-    section { margin-bottom: 50px; }
-    h2 { margin-bottom: 15px; color: #007BFF; text-align: center; }
-
-    /* === جدول المقارنة === */
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { padding: 12px 10px; border: 1px solid #ddd; text-align: center; }
-    th { background: #007BFF; color: white; }
-    tr:nth-child(even) { background: #f9f9f9; }
-
-    /* === السلايدر === */
-    .slider { position: relative; max-width: 100%; margin: 0 auto 40px; overflow: hidden; border-radius: 10px; }
-    .slides { display: flex; transition: transform 0.5s ease-in-out; }
-    .slides img { width: 100%; flex-shrink: 0; }
-
-    /* أزرار السلايدر */
-    .prev, .next {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(0,0,0,0.5); color: white; padding: 10px; cursor: pointer; border-radius: 50%;
-      font-size: 18px; user-select: none;
+    /* ===== عام ===== */
+    :root {
+      --brand: #0b3d91;
+      --accent: #21c26b;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --bg: #f8fafc;
     }
-    .prev { left: 15px; }
-    .next { right: 15px; }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--ink);}
+    a {text-decoration:none; color:inherit;}
+    img {max-width:100%; display:block;}
+    .container {width:min(1200px,92%); margin:0 auto;}
+    section {padding:60px 0;}
+    h2 {font-size:2rem; margin-bottom:20px;}
+    .pill {display:inline-block; background:#eef2ff; color:#3730a3; padding:.3rem .6rem; border-radius:999px; font-size:.85rem;}
+    .card {background:#fff; border-radius:16px; overflow:hidden; border:1px solid #e5e7eb; margin-bottom:30px; box-shadow:0 4px 10px rgba(0,0,0,0.05);}
+    .card-body {padding:20px;}
+    ul {margin-left:20px; margin-bottom:10px;}
+    table {width:100%; border-collapse:collapse; margin-bottom:20px;}
+    th, td {padding:12px; text-align:center; border:1px solid #e5e7eb; background:#fff;}
+    th {background:#f0f4ff;}
+    .note {background:#f1f5f9; border:1px dashed #cbd5e1; padding:12px; border-radius:12px; margin-top:12px; color:#334155;}
+    button {cursor:pointer; transition:all 0.3s ease;}
+    button:hover {filter:brightness(1.2);}
 
-    /* === شروحات === */
-    .tutorial { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    /* ===== Navbar ===== */
+    header {position:sticky; top:0; z-index:100; background:#fff; border-bottom:1px solid #e5e7eb;}
+    .nav {display:flex; justify-content:space-between; align-items:center; height:64px; padding:0 1rem;}
+    .nav ul {display:flex; list-style:none; gap:12px;}
+    .nav a {padding:.5rem .8rem; border-radius:12px;}
+    .nav a:hover {background:#f1f5f9;}
+    .cta {background:var(--brand); color:#fff; font-weight:700;}
+    .brand {font-weight:800; font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; color:var(--brand);}
 
-    /* === Footer === */
-    footer { background: #333; color: white; text-align: center; padding: 15px 20px; }
+    /* ===== Hero ===== */
+    .hero {text-align:center; padding:80px 20px; background:linear-gradient(180deg,#ebf1ff,transparent);}
+    .hero h1 {font-size:clamp(1.6rem,2.5vw,2.8rem); margin-bottom:15px;}
+    .hero p {color:var(--muted); margin-bottom:20px;}
+    .btn {display:inline-flex; align-items:center; gap:6px; padding:.7rem 1rem; border-radius:14px; border:1px solid #e2e8f0; background:#fff;}
+    .btn.primary {background:var(--accent); border-color:var(--accent); color:#042e14; font-weight:800;}
 
-    /* === تجاوب مع الهواتف === */
-    @media (max-width: 768px) {
-      header { flex-direction: column; align-items: flex-start; }
-      nav ul { flex-direction: column; width: 100%; }
-      nav ul li { margin-bottom: 10px; }
-      th, td { font-size: 14px; padding: 8px; }
-    }
+    /* ===== Slider ===== */
+    .slider {position:relative; overflow:hidden; border-radius:16px; margin-bottom:15px;}
+    .slides {display:flex; transition:transform 0.5s ease;}
+    .slides img {flex-shrink:0; width:100%; height:320px; object-fit:cover; border-bottom:1px solid #e5e7eb;}
+    .slider-nav {position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px;}
+    .slider-nav span {width:12px; height:12px; border-radius:50%; background:#fff; opacity:.5; border:1px solid #000; cursor:pointer;}
+    .slider-nav span.active {opacity:1; background:var(--accent);}
+    .slider-buttons {position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%); padding:0 10px;}
+    .slider-buttons button {background:rgba(0,0,0,0.5); color:#fff; border:none; padding:10px; border-radius:50%; font-size:1.2rem;}
+    .slider-buttons button:hover {background:var(--accent); color:#fff;}
+
+    /* ===== Footer ===== */
+    footer {background:#0b1220; color:#cbd5e1; padding:36px 0;}
+    .foot-grid {display:grid; gap:20px;}
+    @media(min-width:768px){.foot-grid{grid-template-columns:repeat(3,1fr);}}
+    .floating-top{position:fixed; bottom:12px; right:12px; background:#111827; color:#fff; padding:.6rem; border-radius:12px; opacity:.9; display:none;}
   </style>
 </head>
 <body>
-
-  <!-- رأس الصفحة -->
+  <!-- ===== Navbar ===== -->
   <header>
-    <div class="logo">موقع الربح العربي</div>
-    <nav>
+    <nav class="container nav">
+      <a href="#home" class="brand">💸 أدلة الربح المجاني</a>
       <ul>
-        <li><a href="#slider">الرئيسية</a></li>
-        <li><a href="#sites">أفضل المواقع</a></li>
-        <li><a href="#tutorials">الشروحات</a></li>
-        <li><a href="#contact">اتصل بنا</a></li>
+        <li><a href="#home">🏠 الرئيسية</a></li>
+        <li><a href="#sites">💰 مواقع الربح</a></li>
+        <li><a href="#tutorials">📚 الشروحات</a></li>
+        <li><a href="#compare">📊 مقارنة</a></li>
+        <li><a href="#payments">💳 طرق الدفع</a></li>
+        <li><a href="#faq">❓ الأسئلة الشائعة</a></li>
+        <li><a href="#contact" class="cta">اتصل بنا</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- السلايدر -->
-  <section id="slider">
-    <div class="slider">
-      <div class="slides">
-        <img src="https://images.openai.com/thumbnails/url/d-gZwnicu1mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5KLvCJ97P0i_AzcfYMzcyuzE9N90gvCsjKzcty9XI3TQ83jKhIsvAOM4p3Ly2p9M3O1nV3DLKszIx3DVQrBgAlLSoS" alt="موقع 1">
-        <img src="https://images.openai.com/thumbnails/url/IJgp8Hicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5xtDRIc82rKsz2DXZ1cjYpdy9PcvMy8HF0jSzwyygP9Y83C_P0cPLIDg7LcQl3TzINCTCO9y-OSAlWKwYAq28oYw" alt="موقع 2">
-        <img src="https://images.openai.com/thumbnails/url/7LFG5Hicu1mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw72y64KLPNKiy8uzY70dnfKzzBw9HExiI80TEpKT_LKD87wzE-vdPVPqXK1CHNN83ANKiuJsAwMq4zKDVQrBgAyPip5" alt="موقع 3">
+  <!-- ===== Hero ===== -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>ابدأ الرحلة نحو <span style="color:var(--brand)">الربح المجاني</span> من الإنترنت</h1>
+      <p>دليل موثوق، شروحات واضحة، وسلايدر لكل موقع مع المقارنة بين أفضل المنصات.</p>
+      <div class="btns">
+        <a class="btn primary" href="#sites">ابدأ من المواقع الموصى بها</a>
+        <a class="btn" href="#compare">قارن قبل أن تبدأ</a>
       </div>
-      <div class="prev">&#10094;</div>
-      <div class="next">&#10095;</div>
     </div>
   </section>
 
-  <!-- جدول المقارنة -->
-  <section id="sites">
-    <h2>أفضل مواقع الربح</h2>
+  <!-- ===== مواقع الربح ===== -->
+  <section id="sites" class="container">
+    <h2>💰 مواقع الربح الموصى بها</h2>
+
+    <!-- IP Web Pro -->
+    <div class="card">
+      <div class="card-body">
+        <h3>IP Web Pro</h3>
+        <div class="slider">
+          <div class="slides">
+            <img src="https://i.imgur.com/mcJqUlg.jpeg" alt="واجهة IP Web Pro">
+            <img src="https://i.imgur.com/EMaArEf.jpeg" alt="مهام IP Web Pro">
+            <img src="https://i.imgur.com/8JIebTy.jpeg" alt="طرق الربح في IP Web Pro">
+          </div>
+          <div class="slider-buttons">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+          </div>
+          <div class="slider-nav"></div>
+        </div>
+        <p>رابط التسجيل: <a href="https://www.ipweb.pro/?amarazaki" target="_blank">ipweb.pro/?amarazaki</a></p>
+        <ul>
+          <li>مشاهدة الإعلانات ومهام بسيطة.</li>
+          <li>برنامج إحالة لتحصيل نسبة من أرباح المدعوين.</li>
+        </ul>
+        <div class="note">نصيحة: ركّز على المهام ذات العائد الأعلى أولًا.</div>
+      </div>
+    </div>
+
+    <!-- ySense -->
+    <div class="card">
+      <div class="card-body">
+        <h3>ySense</h3>
+        <div class="slider">
+          <div class="slides">
+            <img src="https://i.imgur.com/Llh7Xq9.jpeg" alt="واجهة ySense">
+            <img src="https://i.imgur.com/9EhYmnM.jpeg" alt="استطلاعات ySense">
+            <img src="https://i.imgur.com/LCNASJX.jpeg" alt="مهام ySense">
+          </div>
+          <div class="slider-buttons">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+          </div>
+          <div class="slider-nav"></div>
+        </div>
+        <p>رابط التسجيل: <a href="https://www.ysense.com/?rb=219038136" target="_blank">ysense.com/?rb=219038136</a></p>
+        <ul>
+          <li>استطلاعات مدفوعة حسب ملفك الشخصي.</li>
+          <li>مهام صغيرة وتجارب تطبيقات.</li>
+        </ul>
+        <div class="note">نصيحة: عدّل ملفك التعريفي بدقة لزيادة فرص التأهل.</div>
+      </div>
+    </div>
+
+    <!-- Swagbucks -->
+    <div class="card">
+      <div class="card-body">
+        <h3>Swagbucks</h3>
+        <div class="slider">
+          <div class="slides">
+            <img src="https://i.imgur.com/UyvqFox.jpeg" alt="واجهة Swagbucks">
+            <img src="https://i.imgur.com/0ZeBc1u.jpeg" alt="أنشطة Swagbucks">
+          </div>
+          <div class="slider-buttons">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+          </div>
+          <div class="slider-nav"></div>
+        </div>
+        <p>رابط الموقع: <a href="https://www.swagbucks.com" target="_blank">swagbucks.com</a></p>
+        <ul>
+          <li>استطلاعات، مشاهدة فيديو، والتسوق لاسترداد النقاط.</li>
+        </ul>
+        <div class="note">نصيحة: فعّل تنبيهات العروض اليومية للاستفادة القصوى.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== مقارنة المواقع ===== -->
+  <section id="compare" class="container">
+    <h2>📊 مقارنة المواقع</h2>
     <table>
       <thead>
         <tr>
           <th>الموقع</th>
+          <th>نوع الربح</th>
           <th>الحد الأدنى للسحب</th>
           <th>طرق الدفع</th>
-          <th>رابط التسجيل</th>
+          <th>سهولة الاستخدام</th>
+          <th>الربحية المتوقعة</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>IP Web Pro</td>
-          <td>3 روبل</td>
-          <td>Payer، عملات رقمية</td>
-          <td><a href="https://www.ipweb.pro/?amarazaki" target="_blank">سجل الآن</a></td>
+          <td>زيارات/إعلانات + مهام</td>
+          <td>متغيّر حسب الطريقة</td>
+          <td>محافظ إلكترونية شائعة</td>
+          <td>⭐⭐⭐☆</td>
+          <td>⭐⭐⭐☆</td>
         </tr>
         <tr>
           <td>ySense</td>
-          <td>15$ (أول سحب)</td>
-          <td>PayPal، Payoneer</td>
-          <td><a href="https://www.ysense.com/?rb=219038136" target="_blank">سجل الآن</a></td>
+          <td>استطلاعات + عروض + مهام صغيرة</td>
+          <td>متغيّر حسب الطريقة</td>
+          <td>PayPal / Payoneer / Skrill</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐⭐☆</td>
         </tr>
         <tr>
           <td>Swagbucks</td>
-          <td>25$ (PayPal)</td>
-          <td>PayPal، بطاقات هدايا</td>
-          <td><a href="https://www.swagbucks.com" target="_blank">سجل الآن</a></td>
+          <td>استطلاعات + فيديو + تسوق (Cashback)</td>
+          <td>يعتمد على المكافأة</td>
+          <td>PayPal / بطاقات هدايا</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>⭐⭐⭐☆</td>
         </tr>
       </tbody>
     </table>
+    <div class="note">القيم تقديرية لتسهيل المقارنة وقد تختلف حسب بلدك.</div>
   </section>
 
-  <!-- الشروحات -->
-  <section id="tutorials">
-    <h2>شروحات مفصلة</h2>
-    <div class="tutorial">
-      <h3>IP Web Pro</h3>
-      <p>يمكنك كسب المال عن طريق تصفح الإنترنت، مشاهدة الإعلانات، وإنجاز المهام. الحد الأدنى للسحب 3 روبل، والدفع عبر Payer أو العملات الرقمية.</p>
-    </div>
-    <div class="tutorial">
-      <h3>ySense</h3>
-      <p>منصة للاستطلاعات والمهام المدفوعة. الحد الأدنى للسحب 15$ لأول مرة. الدفع عبر PayPal أو Payoneer.</p>
-    </div>
-    <div class="tutorial">
-      <h3>Swagbucks</h3>
-      <p>كسب النقاط من مشاهدة الفيديوهات، التسوق، أو إجراء استطلاعات. الحد الأدنى للسحب 25$ عبر PayPal، ويمكن سحب النقاط مقابل بطاقات هدايا.</p>
-    </div>
-  </section>
+  <!-- ===== Floating Top Button ===== -->
+  <button id="toTop" class="floating-top">⬆️</button>
 
-  <!-- Footer -->
-  <footer id="contact">
-    <p>&copy; 2025 موقع الربح العربي. جميع الحقوق محفوظة.</p>
-  </footer>
-
-  <!-- JavaScript للسلايدر -->
+  <!-- ===== JavaScript ===== -->
   <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const prev = document.querySelector('.prev');
-    const next = document.querySelector('.next');
+    // زر العودة للأعلى
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll',()=>{ toTop.style.display = window.scrollY>600?'block':'none'; });
+    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-    let counter = 0;
-    const size = images[0].clientWidth;
-
-    function updateSlider() {
-      slides.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-
-    next.addEventListener('click', () => {
-      counter++;
-      if(counter >= images.length) counter = 0;
-      updateSlider();
-    });
-
-    prev.addEventListener('click', () => {
-      counter--;
-      if(counter < 0) counter = images.length - 1;
-      updateSlider();
-    });
-
-    // سلايدر تلقائي
-    setInterval(() => {
-      counter++;
-      if(counter >= images.length) counter = 0;
-      updateSlider();
-    }, 4000);
-  </script>
-
-</body>
-</html>
+    // سلايدر لكل موقع
+    document.querySelectorAll('.card').forEach(card => {
+     
