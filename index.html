@@ -446,122 +446,67 @@
       <summary>لماذا تُرفض بعض الاستطلاعات؟</summary>
       <p>لعدم التطابق مع العينة المطلوبة، أو اختلاف الإجابات، أو مشاكل تقنية. حافظ على ثبات إجابات ملفك.</p>
     </details>
-  </section><!-- ===== Contact ===== -->
-<section id="contact" class="container" aria-labelledby="contact-title" style="padding:20px;max-width:800px;margin:auto">
-  <div class="section-head" style="text-align:center;margin-bottom:20px">
+  <!-- ===== قسم الاتصال ===== -->
+<section id="contact" class="container" aria-labelledby="contact-title" style="padding: 20px; max-width: 600px; margin: auto;">
+  <div class="section-head" style="text-align: center; margin-bottom: 20px;">
     <h2 id="contact-title">📩 اتصل بنا</h2>
-    <span class="pill" style="display:inline-block;background:#eee;padding:5px 10px;border-radius:12px">نرد خلال 48 ساعة</span>
+    <span class="pill">نرد خلال 48 ساعة</span>
   </div>
-  <form id="contactForm" aria-label="نموذج تواصل" class="site" style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)">
+
+  <form id="contact-form" aria-label="نموذج تواصل" style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 12px;">
     <div class="site-body">
-      <label style="display:block;margin-bottom:15px">الاسم<br>
-        <input type="text" name="name" placeholder="اسمك" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      <label>الاسم<br>
+        <input type="text" name="name" placeholder="اسمك" required style="width:100%;padding:.7rem;border:1px solid #ccc;border-radius:12px">
       </label>
+      <br><br>
 
-      <label style="display:block;margin-bottom:15px">البريد<br>
-        <input type="email" name="email" placeholder="you@email.com" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px">
+      <label>البريد<br>
+        <input type="email" name="email" placeholder="you@email.com" required style="width:100%;padding:.7rem;border:1px solid #ccc;border-radius:12px">
       </label>
+      <br><br>
 
-      <label style="display:block;margin-bottom:15px">رسالتك<br>
-        <textarea name="msg" rows="5" placeholder="كيف نقدر نساعدك؟" required style="width:100%;padding:.7rem;border:1px solid #e5e7eb;border-radius:12px"></textarea>
+      <label>رسالتك<br>
+        <textarea name="message" rows="5" placeholder="كيف نقدر نساعدك؟" style="width:100%;padding:.7rem;border:1px solid #ccc;border-radius:12px"></textarea>
       </label>
+      <br><br>
 
-      <button type="submit" class="btn primary" style="width:100%;padding:10px;background:#007BFF;color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer">إرسال</button>
+      <button type="submit" class="btn primary" style="width: 100%; padding: 10px; background: #FFD700; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+        إرسال
+      </button>
     </div>
   </form>
+
+  <p id="form-status" style="text-align:center; margin-top:15px; font-weight:bold;"></p>
 </section>
 
-<!-- ===== API Script ===== -->
 <script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-  let name = this.name.value.trim();
-  let email = this.email.value.trim();
-  let message = this.msg.value.trim();
+  const status = document.getElementById("form-status");
+  status.innerHTML = "⏳ جاري الإرسال...";
 
-  if (!name || !email || !message) {
-    alert("يرجى ملء جميع الحقول");
-    return;
-  }
+  const formData = new FormData(event.target);
 
   try {
-    let response = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("https://formspree.io/f/6cbc99cb-296a-458c-8298-21b855f45dea", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: "6cbc99cb-296a-458c-8298-21b855f45dea",
-        name: name,
-        email: email,
-        message: message
-      })
+      body: formData,
+      headers: { 'Accept': 'application/json' }
     });
 
-    let result = await response.json();
-
-    if (result.success) {
-      alert("✅ تم إرسال رسالتك بنجاح");
-      this.reset();
+    if (response.ok) {
+      status.innerHTML = "✅ تم إرسال الرسالة بنجاح، شكراً لتواصلك معنا!";
+      event.target.reset();
     } else {
-      alert("❌ حدث خطأ أثناء الإرسال");
+      status.innerHTML = "❌ حدث خطأ أثناء الإرسال، حاول لاحقاً.";
     }
   } catch (error) {
-    alert("⚠️ تعذر الاتصال بالخادم");
+    status.innerHTML = "⚠️ تعذر الاتصال بالخادم.";
   }
 });
 </script>
 
-<!-- ===== Responsive CSS ===== -->
-<style>
-  @media (max-width: 600px) {
-    #contact {
-      padding: 15px;
-    }
-    .site-body input, .site-body textarea, .site-body button {
-      font-size: 14px;
-    }
-  }
-</style>
-
-<!-- ===== API Script ===== -->
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  let name = this.name.value.trim();
-  let email = this.email.value.trim();
-  let message = this.msg.value.trim();
-
-  if (!name || !email || !message) {
-    alert("يرجى ملء جميع الحقول");
-    return;
-  }
-
-  try {
-    let response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: "6cbc99cb-296a-458c-8298-21b855f45dea",
-        name: name,
-        email: email,
-        message: message
-      })
-    });
-
-    let result = await response.json();
-
-    if (result.success) {
-      alert("✅ تم إرسال رسالتك بنجاح");
-      this.reset();
-    } else {
-      alert("❌ حدث خطأ أثناء الإرسال");
-    }
-  } catch (error) {
-    alert("⚠️ تعذر الاتصال بالخادم");
-  }
-});
-</script>
   <!-- ===== Footer ===== -->
   <footer>
     <div class="container foot-grid">
@@ -620,6 +565,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
   </script>
 </body>
 </html>
+
 
 
 
