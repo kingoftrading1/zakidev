@@ -1,171 +1,331 @@
-/* ===============================
-   أساسيّات + الحفاظ على تصميمك
-   =============================== */
-
-/* === إعدادات عامة === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ===== إعدادات عامة ===== */
+:root {
+  --primary-color: #0b3d91;
+  --accent-color: #21c26b;
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --muted-color: #64748b;
+  --card-bg: #fff;
+  --shadow-color: rgba(0,0,0,0.05);
 }
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body {
-  background: linear-gradient(135deg, #f4f4f4 0%, #e2e8f0 100%);
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-/* === رأس الصفحة === */
-header {
-  background: #1E3A8A;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-header .logo {
-  font-size: 1.8em;
-  font-weight: bold;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-nav ul li a {
-  color: white;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-nav ul li a:hover {
-  background: rgba(255,255,255,0.2);
+a {
+  text-decoration:none;
+  color:inherit;
 }
 
-/* === السلايدر === */
+img {
+  max-width:100%;
+  display:block;
+}
+
+/* ===== الحاويات ===== */
+.container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+/* ===== العناوين ===== */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+/* ===== الأزرار ===== */
+button, .btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+}
+
+button:hover, .btn:hover {
+  filter: brightness(1.2);
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: .7rem 1rem;
+  border:1px solid #e2e8f0;
+  border-radius: 14px;
+  background:#fff;
+  color: var(--text-color);
+}
+
+.btn.primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color:#fff;
+}
+
+/* ===== Navbar ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height: 64px;
+  padding: 0 1rem;
+}
+
+.nav ul {
+  display:flex;
+  list-style:none;
+  gap:12px;
+}
+
+.nav a {
+  padding:.5rem .8rem;
+  border-radius:12px;
+  font-weight:500;
+}
+
+.nav a:hover {
+  background:#f1f5f9;
+}
+
+.brand {
+  font-weight:800;
+  font-size:1.2rem;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  color: var(--primary-color);
+}
+
+/* ===== Hero ===== */
+.hero {
+  text-align:center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg,#ebf1ff,transparent);
+}
+
+.hero h1 {
+  font-size: clamp(1.6rem,2.5vw,2.8rem);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: var(--muted-color);
+  margin-bottom: 20px;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.card-body {
+  padding:20px;
+}
+
+ul {
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:20px;
+}
+
+th, td {
+  padding:12px;
+  text-align:center;
+  border:1px solid #e5e7eb;
+  background:#fff;
+}
+
+th {
+  background:#f0f4ff;
+}
+
+.note {
+  background:#f1f5f9;
+  border:1px dashed #cbd5e1;
+  padding:12px;
+  border-radius:12px;
+  margin-top:12px;
+  color:#334155;
+}
+
+/* ===== Slider ===== */
 .slider {
   position: relative;
-  max-width: 100%;
-  margin: 30px auto;
   overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-radius:16px;
+  margin-bottom:15px;
 }
+
 .slides {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
+  display:flex;
+  transition: transform 0.5s ease-in-out;
 }
+
 .slides img {
-  width: 100%;
-  flex-shrink: 0;
-  border-radius: 15px;
+  flex-shrink:0;
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-bottom:1px solid #e5e7eb;
 }
 
 /* أزرار السلايدر */
-.prev, .next {
+.slider-buttons {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top:50%;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  transform:translateY(-50%);
+  padding:0 10px;
+}
+
+.slider-buttons button {
   background: rgba(0,0,0,0.5);
-  color: white;
-  padding: 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 22px;
-  user-select: none;
-  transition: background 0.3s;
+  color:#fff;
+  border:none;
+  padding:10px;
+  border-radius:50%;
+  font-size:1.2rem;
 }
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.8);
+
+.slider-buttons button:hover {
+  background: var(--accent-color);
 }
-.prev { left: 15px; }
-.next { right: 15px; }
 
 /* نقاط السلايدر */
-.slider-dots {
-  text-align: center;
-  margin-top: 15px;
-}
-.slider-dots span {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 5px;
-  background: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.slider-dots .active {
-  background: #1E3A8A;
+.slider-nav {
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
 }
 
-/* === جدول المقارنة === */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-th, td {
-  padding: 14px 10px;
-  text-align: center;
-}
-th {
-  background: #1E3A8A;
-  color: white;
-  font-weight: 600;
-}
-tr:nth-child(even) { background: #f9f9f9; }
-tr:hover { background: #e0e7ff; }
-td a {
-  color: #1E3A8A;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-td a:hover { color: #3745AB; }
-
-/* === الشروحات === */
-.tutorial {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  margin-bottom: 25px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.tutorial:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-.tutorial h3 {
-  color: #1E3A8A;
-  margin-bottom: 10px;
+.slider-nav span {
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#fff;
+  opacity:.5;
+  border:1px solid #000;
+  cursor:pointer;
+  transition: all 0.3s ease;
 }
 
-/* === Footer === */
+.slider-nav span.active {
+  opacity:1;
+  background: var(--accent-color);
+}
+
+/* ===== Footer ===== */
 footer {
-  background: #1E293B;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 14px;
+  background: #0b1220;
+  color: #cbd5e1;
+  padding:36px 0;
 }
 
-/* === تجاوب مع الهواتف === */
-@media (max-width: 768px) {
-  header { flex-direction: column; align-items: flex-start; }
-  nav ul { flex-direction: column; width: 100%; }
-  nav ul li { margin-bottom: 10px; }
-  th, td { font-size: 13px; padding: 10px; }
-  .prev, .next { padding: 10px; font-size: 18px; }
+.foot-grid {
+  display:grid;
+  gap:20px;
+}
+
+@media(min-width:768px){
+  .foot-grid {
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){
+  .hero h1 {font-size:2rem;}
+  .nav ul {gap:6px;}
+}
+
+@media(max-width:768px){
+  .nav {flex-direction:column; gap:12px; padding:10px;}
+  .slider-buttons button {padding:8px; font-size:1rem;}
+}
+
+@media(max-width:480px){
+  .hero {padding:60px 10px;}
+  .card-body {padding:12px;}
+  table, th, td {font-size:0.85rem;}
+}
+
+/* ===== تأثيرات تفاعلية ===== */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow:0 8px 20px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+button, .btn {
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== زر العودة للأعلى ===== */
+.floating-top{
+  position: fixed;
+  bottom:12px;
+  right:12px;
+  background:#111827;
+  color:#fff;
+  padding:.6rem;
+  border-radius:12px;
+  opacity:.9;
+  display:none;
+  cursor:pointer;
+  z-index:200;
+}
+
+.floating-top:hover {
+  background: var(--accent-color);
 }
